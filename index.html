@@ -22,19 +22,15 @@
       <label v-bind:for="'e' + index">{{ estate }}</label>
     </span>
 
+
     <h2>人口グラフ</h2>
-    <div class="container">
-      <div class="item" style="height: 100px;"></div>
-      <div class="item" style="height: 90px;"></div>
-      <div class="item" style="height: 80px;"></div>
-      <div class="item" style="height: 70px;"></div>
-      <div class="item" style="height: 60px;"></div>
-      <div class="item" style="height: 50px;"></div>
-      <div class="item" style="height: 40px;"></div>
-      <div class="item" style="height: 30px;"></div>
-      <div class="item" style="height: 20px;"></div>
-      <div class="item" style="height: 10px;"></div>
-    </div>
+      }
+      
+      <div class="container">
+        <span v-for="(jinkou,index) in items">
+        <div class="item" v-bind:style="{'height:item+'px'}"></div>
+
+      </div>
   </div>
 </body>
 
