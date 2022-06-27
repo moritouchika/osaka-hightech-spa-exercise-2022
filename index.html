@@ -24,12 +24,10 @@
 
 
     <h2>人口グラフ</h2>
-      }
-      
       <div class="container">
-        <span v-for="(jinkou,index) in items">
-        <div class="item" v-bind:style="{'height:item+'px'}"></div>
-
+        <span v-for="(jinkou,index) in jinkou">
+         <div class="item"  v-bind:style="{'height':jinkou+'px'}">{{jinkou}}</div>
+        </span>  
       </div>
   </div>
 </body>
