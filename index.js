@@ -65,12 +65,12 @@ const PopulationBarPlot = {
   props: [ 'api' ],
   data() {
     return {
-      populations: [ 100, 90, 80, 70, 60, 50, 40, 30, 20, 10 ],
+      populations: [],
     };
   },
   /* html */
   template: `
-  <div>{{ api }}</div>
+  <button v-on:click="updateGraph">更新</button>
   <div class="container">
     <div
       v-for="population in populations"
@@ -79,6 +79,20 @@ const PopulationBarPlot = {
     ></div>
   </div>
   `,
+  methods: {
+    async updateGraph() {
+      let xs = await getPopulations(this.api, 27);
+
+      // JSON から、'result' -> 'data' -> 0 番目 -> 'data'，と辿った箇所を xs に代入
+      xs = xs['result']['data'][0]['data'];
+
+      let ys = []
+
+      ys = xs.map(value => value.value /10000-500);
+      //長さ短縮のために全ての-500して根元の部分を削ってます。
+      this.populations = ys;
+    },
+  },
 };
 
 const RootComponent = {
